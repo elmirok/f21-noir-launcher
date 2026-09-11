@@ -25,6 +25,15 @@ Read-only inspection on a physical `k61v1_64_bsp` running Android 11 identified:
 | `KEY_NUMERIC_POUND` | `KEYCODE_POUND` |
 | Dedicated GPIO Menu key | `KEYCODE_MENU` |
 
+## Touch gestures
+
+- Swipe up on Home: open all apps.
+- Swipe down in all apps: return Home.
+- Swipe left or right in all apps: change page.
+
+App tiles remain focusable in Android touch mode, so the first D-pad press after touching the
+screen moves focus immediately instead of only restoring keyboard focus.
+
 The keypad also reports the star position as `KEY_SWITCHVIDEOMODE` at the Linux
 input layer. Its final Android keycode, and long-press behavior for Menu and
 digits, must still be confirmed by pressing the physical keys before beta.

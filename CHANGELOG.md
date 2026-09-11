@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.0-alpha.2 — unreleased
+
+- Added swipe up for all apps, swipe down for Home, and horizontal app-page gestures.
+- Kept app tiles focusable in touch mode so D-pad navigation responds on the first press after a tap.
+- Made the dedicated Menu key open all apps on key-down instead of waiting for key-up.
+- Added unit coverage for gesture thresholds, direction, diagonals, and slow movement.
+
 ## 0.1.0-alpha.1 — unreleased
 
 - Initial Noir Minimal home and 3×3 app drawer.

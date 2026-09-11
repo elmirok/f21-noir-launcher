@@ -10,6 +10,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Gravity
 import android.view.KeyEvent
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.GridLayout
@@ -20,6 +21,7 @@ import android.widget.Toast
 import io.github.elmirok.f21noir.data.LauncherRepository
 import io.github.elmirok.f21noir.model.AppEntry
 import io.github.elmirok.f21noir.model.KeyBehavior
+import io.github.elmirok.f21noir.model.SwipeGesture
 import io.github.elmirok.f21noir.ui.AppTileView
 import io.github.elmirok.f21noir.ui.NoirGlyphs
 import io.github.elmirok.f21noir.ui.NoirUi
@@ -34,6 +36,9 @@ class LauncherActivity : Activity() {
     private var longPressConsumed = false
     private var receiverRegistered = false
     private var hasRendered = false
+    private var touchDownX = 0f
+    private var touchDownY = 0f
+    private var touchDownTime = 0L
 
     private enum class Mode { HOME, APPS }
 
@@ -74,6 +79,48 @@ class LauncherActivity : Activity() {
     override fun onNewIntent(intent: Intent?) {
         super.onNewIntent(intent)
         showHome()
+    }
+
+    override fun dispatchTouchEvent(event: MotionEvent): Boolean {
+        when (event.actionMasked) {
+            MotionEvent.ACTION_DOWN -> {
+                touchDownX = event.x
+                touchDownY = event.y
+                touchDownTime = event.eventTime
+            }
+            MotionEvent.ACTION_UP -> {
+                val gesture = SwipeGesture.detect(
+                    deltaX = event.x - touchDownX,
+                    deltaY = event.y - touchDownY,
+                    durationMs = event.eventTime - touchDownTime,
+                    minimumDistancePx = dp(48).toFloat(),
+                )
+                if (handleGesture(gesture)) return true
+            }
+            MotionEvent.ACTION_CANCEL -> touchDownTime = 0L
+        }
+        return super.dispatchTouchEvent(event)
+    }
+
+    private fun handleGesture(gesture: SwipeGesture.Direction?): Boolean = when {
+        mode == Mode.HOME && gesture == SwipeGesture.Direction.UP -> {
+            showApps()
+            true
+        }
+        mode == Mode.APPS && gesture == SwipeGesture.Direction.DOWN -> {
+            showHome()
+            true
+        }
+        mode == Mode.APPS && gesture == SwipeGesture.Direction.LEFT &&
+            (page + 1) * PAGE_SIZE < apps.size -> {
+            showApps(page + 1)
+            true
+        }
+        mode == Mode.APPS && gesture == SwipeGesture.Direction.RIGHT && page > 0 -> {
+            showApps(page - 1)
+            true
+        }
+        else -> false
     }
 
     private fun registerPackageReceiver() {
@@ -206,6 +253,9 @@ class LauncherActivity : Activity() {
             if (event.repeatCount == 0) {
                 longPressConsumed = false
                 event.startTracking()
+                // Open immediately on key-down. Waiting for key-up made the dedicated hardware
+                // button feel delayed; tracking still lets Android deliver a long press below.
+                if (mode == Mode.HOME) showApps()
             }
             return true
         }
@@ -249,7 +299,6 @@ class LauncherActivity : Activity() {
             return true
         }
         if (keyCode == KeyEvent.KEYCODE_MENU) {
-            if (!longPressConsumed && event.isTracking && !event.isCanceled) showApps()
             return true
         }
         return super.onKeyUp(keyCode, event)

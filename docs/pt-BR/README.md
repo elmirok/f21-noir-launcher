@@ -15,6 +15,9 @@ Ele não remove nem substitui o Launcher3 original.
 - Direcional: move o foco.
 - Centro: abre o item.
 - Menu: mostra todos os aplicativos.
+- Deslizar para cima na Home: também mostra todos os aplicativos.
+- Deslizar para baixo nos aplicativos: retorna à Home.
+- Deslizar para os lados nos aplicativos: muda de página.
 - Menu longo: abre os ajustes.
 - Toque no relógio: também abre os ajustes.
 - Chamar: abre o telefone.

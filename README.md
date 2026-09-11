@@ -20,7 +20,8 @@ contains no ads, telemetry, Google services, or network permission.
 - Noir Minimal interface for the F21's 480×640 display at 208 dpi.
 - Large 24-hour clock and six editable favorites.
 - Monochrome app icons and a 3×3 paginated app drawer.
-- D-pad focus, center-to-open, Menu for apps, and long Menu for settings.
+- D-pad focus, center-to-open, Menu or swipe up for apps, and long Menu for settings.
+- Swipe down returns from the app drawer; horizontal swipes change drawer pages.
 - Short number press opens the dialer; long press launches a configurable shortcut.
 - Reversible hidden-app list and a direct route back to Android's default-home settings.
 - No runtime permissions and no broad package-list permission; the manifest exposes only the
