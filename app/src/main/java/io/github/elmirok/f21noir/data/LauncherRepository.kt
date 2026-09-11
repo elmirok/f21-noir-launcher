@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.provider.MediaStore
-import android.provider.Settings
+import io.github.elmirok.f21noir.SettingsActivity
 import io.github.elmirok.f21noir.model.AppEntry
 import java.text.Collator
 import java.util.Locale
@@ -22,7 +22,7 @@ class LauncherRepository(private val context: Context) {
         DefaultFavorite("Contatos", Intent(Intent.ACTION_MAIN).addCategory(Intent.CATEGORY_APP_CONTACTS)),
         DefaultFavorite("Câmera", Intent(MediaStore.INTENT_ACTION_STILL_IMAGE_CAMERA)),
         DefaultFavorite("Arquivos", Intent(Intent.ACTION_OPEN_DOCUMENT).addCategory(Intent.CATEGORY_OPENABLE).setType("*/*")),
-        DefaultFavorite("Config.", Intent(Settings.ACTION_SETTINGS)),
+        DefaultFavorite("Ajustes Noir", Intent(context, SettingsActivity::class.java)),
     )
 
     fun allApps(includeHidden: Boolean = false): List<AppEntry> {

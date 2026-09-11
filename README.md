@@ -24,6 +24,7 @@ contains no ads, telemetry, Google services, or network permission.
 - Swipe down returns from the app drawer; horizontal swipes change drawer pages.
 - Short number press opens the dialer; long press launches a configurable shortcut.
 - Reversible hidden-app list and a direct route back to Android's default-home settings.
+- A dedicated Noir settings tile, with the vendor Android Settings clearly separated inside it.
 - No runtime permissions and no broad package-list permission; the manifest exposes only the
   launcher-intent queries needed to draw the app drawer.
 

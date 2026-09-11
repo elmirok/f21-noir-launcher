@@ -26,6 +26,10 @@ Ele não remove nem substitui o Launcher3 original.
 - Número longo: executa o atalho configurado.
 - Voltar: fecha a tela atual ou retorna à home.
 
+O bloco **Ajustes Noir** da Home, o toque no relógio e Menu longo abrem sempre os ajustes pretos
+do launcher. Para abrir o painel branco do firmware, escolha **Configurações do Android** dentro
+dos Ajustes Noir ou abra o aplicativo Settings na grade de aplicativos.
+
 ## Privacidade
 
 Não existe permissão de Internet, telemetria, propaganda, conta, sincronização ou Google Play

@@ -62,6 +62,7 @@ class SettingsActivity : Activity() {
         )
         val body = verticalBody("F21 NOIR")
         items.forEach { (label, destination) -> body.addView(row(label) { page = destination; render() }) }
+        body.addView(row("Configurações do Android", "SISTEMA") { openAndroidSettings() })
         body.addView(row("Launcher padrão") { openHomeSettings() })
         body.addView(row("Sobre e privacidade") { page = Page.ABOUT; render() })
         body.addView(NoirUi.footer(this, "MENU LONGO PARA ABRIR"))
@@ -159,6 +160,14 @@ class SettingsActivity : Activity() {
             } catch (_: Exception) {
                 Toast.makeText(this, "Abra Configurações › Apps padrão › Início", Toast.LENGTH_LONG).show()
             }
+        }
+    }
+
+    private fun openAndroidSettings() {
+        try {
+            startActivity(Intent(Settings.ACTION_SETTINGS))
+        } catch (_: Exception) {
+            Toast.makeText(this, "Configurações do Android indisponíveis", Toast.LENGTH_LONG).show()
         }
     }
 

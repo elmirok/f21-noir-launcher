@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.0-alpha.4 — unreleased
+
+- Renamed the sixth default Home tile to `Ajustes Noir` and routed it consistently to the Noir settings UI.
+- Added an explicit `Configurações do Android` row inside Noir settings for intentional access to the vendor Settings app.
+
 ## 0.1.0-alpha.3 — unreleased
 
 - Replaced Android's variable Home focus search with deterministic wrap-around D-pad navigation.
