@@ -4,10 +4,16 @@ F21 Noir is a small, offline Android launcher designed for the Qin/DuoQin F21 Pr
 Android 11. It keeps the stock Launcher3 installed, uses the physical keypad throughout, and
 contains no ads, telemetry, Google services, or network permission.
 
-> **Alpha:** the user interface is implemented and build-tested, but physical F21 key mapping and
-> the 72-hour stability test are still required before a beta release.
+> **Alpha:** the interface and automated physical-device flows were tested on an F21 Pro. Manual
+> long-press key confirmation and the 72-hour stability test are still required before beta.
 
 ![Approved Noir Minimal interface](assets/noir-minimal-home.png)
+
+### Running on the physical F21 Pro
+
+| Home | App drawer | Settings |
+|---|---|---|
+| ![Physical F21 Home](assets/device/home.png) | ![Physical F21 app drawer](assets/device/apps.png) | ![Physical F21 settings](assets/device/settings.png) |
 
 ## Features
 

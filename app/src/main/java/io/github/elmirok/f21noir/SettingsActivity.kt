@@ -19,6 +19,7 @@ import java.util.Locale
 class SettingsActivity : Activity() {
     private lateinit var repository: LauncherRepository
     private var page = Page.MAIN
+    private var hasRendered = false
 
     private enum class Page { MAIN, FAVORITES, SHORTCUTS, HIDDEN, APPEARANCE, ABOUT }
 
@@ -33,7 +34,7 @@ class SettingsActivity : Activity() {
 
     override fun onResume() {
         super.onResume()
-        render()
+        if (hasRendered) render() else hasRendered = true
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

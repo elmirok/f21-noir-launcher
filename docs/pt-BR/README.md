@@ -16,6 +16,7 @@ Ele não remove nem substitui o Launcher3 original.
 - Centro: abre o item.
 - Menu: mostra todos os aplicativos.
 - Menu longo: abre os ajustes.
+- Toque no relógio: também abre os ajustes.
 - Chamar: abre o telefone.
 - Número curto: abre o discador com o número.
 - Número longo: executa o atalho configurado.

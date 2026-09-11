@@ -22,8 +22,8 @@ class AppTileView(context: Context) : LinearLayout(context) {
         isFocusable = true
         isClickable = true
         background = context.getDrawable(R.drawable.focus_frame)
-        setPadding(context.dp(5), context.dp(8), context.dp(5), context.dp(6))
-        addView(icon, LayoutParams(context.dp(45), context.dp(45)))
+        setPadding(context.dp(5), context.dp(7), context.dp(5), context.dp(5))
+        addView(icon, LayoutParams(context.dp(48), context.dp(48)))
         addView(label, LayoutParams(LayoutParams.MATCH_PARENT, context.dp(28)).apply {
             topMargin = context.dp(4)
         })

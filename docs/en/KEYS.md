@@ -10,6 +10,7 @@
 | Short 0–9, `*`, `#` | Open dialer with character |
 | Long 0–9 | Open configured shortcut |
 | Back | Return to home |
+| Tap the clock | Open F21 Noir settings (touch fallback) |
 
 ## F21 Pro hardware observed
 

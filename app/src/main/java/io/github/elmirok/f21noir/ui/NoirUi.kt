@@ -43,11 +43,13 @@ object NoirUi {
     }
 
     fun header(context: Context, value: String): LinearLayout {
+        val longTitle = value.length > 18
         return LinearLayout(context).apply {
             orientation = LinearLayout.VERTICAL
             gravity = Gravity.CENTER
-            addView(text(context, value, 22f, WARM_WHITE, Gravity.CENTER).apply {
-                letterSpacing = 0.24f
+            addView(text(context, value, if (longTitle) 18f else 22f, WARM_WHITE, Gravity.CENTER).apply {
+                letterSpacing = if (longTitle) 0.16f else 0.24f
+                isSingleLine = true
             }, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, context.dp(52)))
             addView(accentDivider(context))
         }
@@ -65,8 +67,9 @@ object NoirUi {
         }
     }
 
-    fun footer(context: Context, value: String) = text(context, value, 11f, DIM, Gravity.CENTER).apply {
-        letterSpacing = 0.2f
+    fun footer(context: Context, value: String) = text(context, value, 9.5f, DIM, Gravity.CENTER).apply {
+        letterSpacing = 0.12f
+        isSingleLine = true
         setPadding(0, context.dp(8), 0, 0)
     }
 
@@ -80,7 +83,10 @@ object NoirUi {
             background = context.getDrawable(R.drawable.list_focus)
             setPadding(context.dp(14), 0, context.dp(12), 0)
             addView(text(context, label, 20f), LinearLayout.LayoutParams(0, context.dp(58), 1f))
-            addView(text(context, trailing, 26f, DIM, Gravity.CENTER), LinearLayout.LayoutParams(context.dp(28), context.dp(58)))
+            val valueWidth = if (trailing == "›" || trailing == "□" || trailing == "✓") 28 else 118
+            addView(text(context, trailing, if (valueWidth == 28) 26f else 17f, DIM, Gravity.END or Gravity.CENTER_VERTICAL).apply {
+                isSingleLine = true
+            }, LinearLayout.LayoutParams(context.dp(valueWidth), context.dp(58)))
             setOnFocusChangeListener { view, focused ->
                 if (focused) {
                     (getChildAt(0) as TextView).setTextColor(AMBER)
