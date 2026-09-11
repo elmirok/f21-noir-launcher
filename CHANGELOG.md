@@ -1,6 +1,11 @@
 # Changelog
 
-## 0.1.0-alpha.2 — unreleased
+## 0.1.0-alpha.3 — unreleased
+
+- Replaced Android's variable Home focus search with deterministic wrap-around D-pad navigation.
+- Reduced the focus transition from 120 ms to 70 ms and handled Center/Enter explicitly.
+
+## 0.1.0-alpha.2 — 2026-09-11
 
 - Added swipe up for all apps, swipe down for Home, and horizontal app-page gestures.
 - Kept app tiles focusable in touch mode so D-pad navigation responds on the first press after a tap.

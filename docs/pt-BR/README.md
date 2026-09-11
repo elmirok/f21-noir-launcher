@@ -13,6 +13,7 @@ Ele não remove nem substitui o Launcher3 original.
 ## Teclas
 
 - Direcional: move o foco.
+- Na Home, o foco dá a volta nas bordas para que toda direção produza movimento visível.
 - Centro: abre o item.
 - Menu: mostra todos os aplicativos.
 - Deslizar para cima na Home: também mostra todos os aplicativos.

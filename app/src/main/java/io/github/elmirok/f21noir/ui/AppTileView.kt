@@ -38,7 +38,7 @@ class AppTileView(context: Context) : LinearLayout(context) {
             background.alpha = if (focused) listOf(150, 210, 255)[focusLevel] else 255
             view.animate().cancel()
             if (animationsEnabled) {
-                view.animate().scaleX(if (focused) 1.025f else 1f).scaleY(if (focused) 1.025f else 1f).setDuration(120).start()
+                view.animate().scaleX(if (focused) 1.025f else 1f).scaleY(if (focused) 1.025f else 1f).setDuration(70).start()
             } else {
                 view.scaleX = 1f
                 view.scaleY = 1f

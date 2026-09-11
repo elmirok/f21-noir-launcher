@@ -20,6 +20,7 @@ import android.widget.TextView
 import android.widget.Toast
 import io.github.elmirok.f21noir.data.LauncherRepository
 import io.github.elmirok.f21noir.model.AppEntry
+import io.github.elmirok.f21noir.model.HomeGridNavigation
 import io.github.elmirok.f21noir.model.KeyBehavior
 import io.github.elmirok.f21noir.model.SwipeGesture
 import io.github.elmirok.f21noir.ui.AppTileView
@@ -39,6 +40,8 @@ class LauncherActivity : Activity() {
     private var touchDownX = 0f
     private var touchDownY = 0f
     private var touchDownTime = 0L
+    private val homeTiles = mutableListOf<AppTileView>()
+    private var homeFocusIndex = 0
 
     private enum class Mode { HOME, APPS }
 
@@ -137,6 +140,7 @@ class LauncherActivity : Activity() {
 
     private fun showHome() {
         mode = Mode.HOME
+        homeTiles.clear()
         val root = NoirUi.screen(this)
         val clockBlock = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
@@ -185,6 +189,7 @@ class LauncherActivity : Activity() {
                 startActivity(Intent(this, AppPickerActivity::class.java).putExtra(AppPickerActivity.EXTRA_FAVORITE_SLOT, slot))
                 true
             }
+            homeTiles += tile
             grid.addView(tile, GridLayout.LayoutParams(
                 GridLayout.spec(slot / 3, 1f),
                 GridLayout.spec(slot % 3, 1f),
@@ -197,7 +202,8 @@ class LauncherActivity : Activity() {
         }
         root.addView(grid, LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0, 1.18f))
         setContentView(root)
-        grid.post { grid.getChildAt(0)?.requestFocus() }
+        homeFocusIndex = homeFocusIndex.coerceIn(homeTiles.indices)
+        grid.post { homeTiles.getOrNull(homeFocusIndex)?.requestFocus() }
     }
 
     private fun showApps(requestedPage: Int = 0) {
@@ -258,6 +264,22 @@ class LauncherActivity : Activity() {
                 if (mode == Mode.HOME) showApps()
             }
             return true
+        }
+        if (mode == Mode.HOME) {
+            if (keyCode == KeyEvent.KEYCODE_DPAD_CENTER || keyCode == KeyEvent.KEYCODE_ENTER ||
+                keyCode == KeyEvent.KEYCODE_NUMPAD_ENTER) {
+                val focused = homeTiles.indexOfFirst { it.hasFocus() }
+                    .takeIf { it >= 0 } ?: homeFocusIndex
+                homeTiles.getOrNull(focused)?.performClick()
+                return true
+            }
+            val focused = homeTiles.indexOfFirst { it.hasFocus() }
+                .takeIf { it >= 0 } ?: homeFocusIndex
+            HomeGridNavigation.next(focused, keyCode)?.let { next ->
+                homeFocusIndex = next
+                homeTiles[next].requestFocus()
+                return true
+            }
         }
         if (mode == Mode.APPS && keyCode == KeyEvent.KEYCODE_DPAD_LEFT && currentFocus?.tag == 0 && page > 0) {
             showApps(page - 1)
