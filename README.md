@@ -48,7 +48,9 @@ F21 Noir enumerates launchable activities so it can show the app drawer. Prefere
 app's private local storage. It has no network stack, analytics SDK, updater, account, or background
 service. See [PRIVACY.md](PRIVACY.md).
 
-For device recovery, see [F21 Rescue](https://github.com/elmirok/f21-rescue).
+For the matching notification shade and system accents, see
+[F21 Noir Theme](https://github.com/elmirok/f21-noir-theme). For device recovery, see
+[F21 Rescue](https://github.com/elmirok/f21-rescue).
 Portuguese documentation: [docs/pt-BR/README.md](docs/pt-BR/README.md).
 
 ## License

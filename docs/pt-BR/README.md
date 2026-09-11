@@ -26,3 +26,9 @@ Ele não remove nem substitui o Launcher3 original.
 
 Não existe permissão de Internet, telemetria, propaganda, conta, sincronização ou Google Play
 Services. A lista de apps ocultos, favoritos e atalhos fica somente no próprio aparelho.
+
+## Projetos relacionados
+
+Para combinar o launcher com o painel de notificações e os detalhes visuais preto/âmbar, veja o
+[F21 Noir Theme](https://github.com/elmirok/f21-noir-theme). Para recuperar o aparelho e reinstalar
+o firmware compatível, veja o [F21 Rescue](https://github.com/elmirok/f21-rescue).
