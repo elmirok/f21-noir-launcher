@@ -24,6 +24,7 @@ import io.github.elmirok.f21noir.model.HomeGridNavigation
 import io.github.elmirok.f21noir.model.KeyBehavior
 import io.github.elmirok.f21noir.model.SwipeGesture
 import io.github.elmirok.f21noir.ui.AppTileView
+import io.github.elmirok.f21noir.ui.NoirAppIcons
 import io.github.elmirok.f21noir.ui.NoirGlyphs
 import io.github.elmirok.f21noir.ui.NoirUi
 import io.github.elmirok.f21noir.ui.NoirUi.dp
@@ -183,7 +184,12 @@ class LauncherActivity : Activity() {
             val tile = AppTileView(this)
             tile.configure(repository.animationsEnabled(), repository.focusLevel())
             val entry = repository.favorite(slot)
-            tile.bind(entry?.label ?: repository.defaults[slot].label, NoirGlyphs.forFavorite(slot))
+            val drawable = if (entry != null && repository.isFavoriteCustomized(slot)) {
+                NoirAppIcons.forApp(packageManager, entry)
+            } else {
+                NoirGlyphs.forFavorite(slot)
+            }
+            tile.bind(entry?.label ?: repository.defaults[slot].label, drawable)
             tile.setOnClickListener { launchIntent(repository.favoriteLaunchIntent(slot)) }
             tile.setOnLongClickListener {
                 startActivity(Intent(this, AppPickerActivity::class.java).putExtra(AppPickerActivity.EXTRA_FAVORITE_SLOT, slot))
@@ -223,7 +229,7 @@ class LauncherActivity : Activity() {
             tile.configure(repository.animationsEnabled(), repository.focusLevel())
             val entry = visible.getOrNull(index)
             if (entry != null) {
-                tile.bind(entry.label, NoirGlyphs.forApp(entry))
+                tile.bind(entry.label, NoirAppIcons.forApp(packageManager, entry))
                 tile.setOnClickListener { launch(entry) }
             } else {
                 tile.visibility = View.INVISIBLE

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.6 — 2026-09-11
+
+- Replaced the generic unknown-app glyph with a local high-contrast monochrome conversion of each
+  app's original icon, preserving recognisable details without adding an icon pack or Internet use.
+- Added focus-aware amber rendering while retaining the icon's internal luminance and transparency.
+- Kept the six default Home favorites on their purpose-built Noir outline glyphs; customized
+  favorites now use the same recognisable themed icons as the app drawer.
+- Physically verified Cello, IronFox, and Translate You on the F21 Pro; measured 58.7 MB total PSS.
+
 ## 0.1.0-alpha.5 — unreleased
 
 - Added the original `Amber Rain` 480×640 Noir lock-screen wallpaper.

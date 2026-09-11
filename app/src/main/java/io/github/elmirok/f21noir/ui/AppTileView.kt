@@ -1,7 +1,6 @@
 package io.github.elmirok.f21noir.ui
 
 import android.content.Context
-import android.graphics.PorterDuff
 import android.graphics.drawable.Drawable
 import android.view.Gravity
 import android.widget.ImageView
@@ -15,6 +14,7 @@ class AppTileView(context: Context) : LinearLayout(context) {
     private val label = NoirUi.text(context, "", 13f, NoirUi.WARM_WHITE, Gravity.CENTER)
     private var animationsEnabled = true
     private var focusLevel = 1
+    private var tileDrawable: Drawable? = null
 
     init {
         orientation = VERTICAL
@@ -29,7 +29,7 @@ class AppTileView(context: Context) : LinearLayout(context) {
         })
         setOnFocusChangeListener { view, focused ->
             val tint = if (focused) NoirUi.AMBER else NoirUi.WARM_WHITE
-            icon.setColorFilter(tint, PorterDuff.Mode.SRC_IN)
+            applyTint(tint)
             label.setTextColor(tint)
             background.alpha = if (focused) listOf(150, 210, 255)[focusLevel] else 255
             view.animate().cancel()
@@ -49,9 +49,21 @@ class AppTileView(context: Context) : LinearLayout(context) {
 
     fun bind(text: String, drawable: Drawable?) {
         label.text = text
+        tileDrawable = drawable
         icon.setImageDrawable(drawable)
-        icon.setColorFilter(if (isFocused) NoirUi.AMBER else NoirUi.WARM_WHITE, PorterDuff.Mode.SRC_IN)
+        applyTint(if (isFocused) NoirUi.AMBER else NoirUi.WARM_WHITE)
         contentDescription = text
+    }
+
+    private fun applyTint(color: Int) {
+        icon.clearColorFilter()
+        val drawable = tileDrawable
+        if (drawable is NoirTintableDrawable) {
+            drawable.setNoirTint(color)
+        } else {
+            drawable?.setTint(color)
+        }
+        icon.invalidate()
     }
 
     fun labelView(): TextView = label

@@ -16,7 +16,7 @@ enum class NoirGlyph {
 }
 
 /** Original, dependency-free outline icon set drawn for the Noir Minimal UI. */
-class NoirGlyphDrawable(private val glyph: NoirGlyph) : Drawable() {
+class NoirGlyphDrawable(private val glyph: NoirGlyph) : Drawable(), NoirTintableDrawable {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
         color = NoirUi.WARM_WHITE
         style = Paint.Style.STROKE
@@ -121,6 +121,11 @@ class NoirGlyphDrawable(private val glyph: NoirGlyph) : Drawable() {
 
     override fun setAlpha(alpha: Int) { paint.alpha = alpha }
     override fun setColorFilter(colorFilter: ColorFilter?) { paint.colorFilter = colorFilter }
+    override fun setNoirTint(color: Int) {
+        paint.color = color
+        paint.colorFilter = null
+        invalidateSelf()
+    }
     @Deprecated("Deprecated in Android")
     override fun getOpacity(): Int = PixelFormat.TRANSLUCENT
 }

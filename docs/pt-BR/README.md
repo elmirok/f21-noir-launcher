@@ -26,6 +26,11 @@ Ele não remove nem substitui o Launcher3 original.
 - Número longo: executa o atalho configurado.
 - Voltar: fecha a tela atual ou retorna à home.
 
+Na grade, o F21 Noir converte localmente o ícone original de cada aplicativo para marfim e cinza,
+mudando-o para âmbar quando selecionado. Assim, aplicativos como Cello, IronFox e Translate You
+continuam reconhecíveis sem destoar do tema. Os seis aplicativos originais da Home mantêm os
+glifos Noir desenhados especialmente para eles.
+
 O bloco **Ajustes Noir** da Home, o toque no relógio e Menu longo abrem sempre os ajustes pretos
 do launcher. Para abrir o painel branco do firmware, escolha **Configurações do Android** dentro
 dos Ajustes Noir ou abra o aplicativo Settings na grade de aplicativos.

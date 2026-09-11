@@ -65,6 +65,8 @@ class LauncherRepository(private val context: Context) {
         prefs.edit().putString(favoriteKey(slot), component.flattenToString()).apply()
     }
 
+    fun isFavoriteCustomized(slot: Int): Boolean = prefs.contains(favoriteKey(slot))
+
     fun shortcut(digit: Int): AppEntry? {
         val stored = prefs.getString(shortcutKey(digit), null)
         if (stored == NONE) return null

@@ -23,7 +23,8 @@ contains no ads, telemetry, Google services, or network permission.
 
 - Noir Minimal interface for the F21's 480×640 display at 208 dpi.
 - Large 24-hour clock and six editable favorites.
-- Monochrome app icons and a 3×3 paginated app drawer.
+- Recognisable monochrome app icons derived locally from each app's original artwork, plus a
+  3×3 paginated app drawer. The six default Home apps keep their purpose-built Noir glyphs.
 - D-pad focus, center-to-open, Menu or swipe up for apps, and long Menu for settings.
 - Swipe down returns from the app drawer; horizontal swipes change drawer pages.
 - Short number press opens the dialer; long press launches a configurable shortcut.
