@@ -5,3 +5,5 @@
 - Initial Noir Minimal home and 3×3 app drawer.
 - Physical-key navigation, dial keys, and configurable long-press shortcuts.
 - Editable favorites, reversible hidden apps, appearance, privacy, and rollback screens.
+- Verified the Android 11, 480×640, 208 dpi baseline on a physical `k61v1_64_bsp`.
+- Avoided a duplicate first-frame render; optimized device-test starts measured 429–517 ms and about 36 MB PSS on the F21 Pro.

@@ -32,6 +32,7 @@ class LauncherActivity : Activity() {
     private var page = 0
     private var longPressConsumed = false
     private var receiverRegistered = false
+    private var hasRendered = false
 
     private enum class Mode { HOME, APPS }
 
@@ -53,7 +54,11 @@ class LauncherActivity : Activity() {
 
     override fun onResume() {
         super.onResume()
-        if (mode == Mode.HOME) showHome() else showApps(page)
+        if (hasRendered) {
+            if (mode == Mode.HOME) showHome() else showApps(page)
+        } else {
+            hasRendered = true
+        }
         registerPackageReceiver()
     }
 

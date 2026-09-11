@@ -11,4 +11,19 @@
 | Long 0–9 | Open configured shortcut |
 | Back | Return to home |
 
-The final keycode table must be verified on the physical `k61v1_64_bsp` device before beta.
+## F21 Pro hardware observed
+
+Read-only inspection on a physical `k61v1_64_bsp` running Android 11 identified:
+
+| Linux input | Android mapping |
+|---|---|
+| `KEY_0`–`KEY_9` | `KEYCODE_0`–`KEYCODE_9` |
+| `KEY_UP/DOWN/LEFT/RIGHT` | D-pad navigation |
+| `KEY_OK` | `KEYCODE_DPAD_CENTER` |
+| `KEY_SEND` | `KEYCODE_CALL` |
+| `KEY_NUMERIC_POUND` | `KEYCODE_POUND` |
+| Dedicated GPIO Menu key | `KEYCODE_MENU` |
+
+The keypad also reports the star position as `KEY_SWITCHVIDEOMODE` at the Linux
+input layer. Its final Android keycode, and long-press behavior for Menu and
+digits, must still be confirmed by pressing the physical keys before beta.
