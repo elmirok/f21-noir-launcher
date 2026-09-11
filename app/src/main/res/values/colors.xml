@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="noir_black">#000000</color>
+    <color name="noir_amber">#FFB000</color>
+    <color name="noir_red">#C62828</color>
+    <color name="noir_warm_white">#E8E0D2</color>
+    <color name="noir_dim">#786F63</color>
+    <color name="noir_line">#34312D</color>
+</resources>

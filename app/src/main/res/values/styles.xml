@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.F21Noir" parent="android:style/Theme.Material.NoActionBar">
+        <item name="android:fontFamily">sans-serif-condensed</item>
+        <item name="android:windowActionModeOverlay">true</item>
+        <item name="android:windowBackground">@color/noir_black</item>
+        <item name="android:colorAccent">@color/noir_amber</item>
+        <item name="android:navigationBarColor">@color/noir_black</item>
+        <item name="android:statusBarColor">@color/noir_black</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>
