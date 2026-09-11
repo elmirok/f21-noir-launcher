@@ -20,10 +20,6 @@ class AppTileView(context: Context) : LinearLayout(context) {
         orientation = VERTICAL
         gravity = Gravity.CENTER
         isFocusable = true
-        // The F21 has both a touchscreen and a hardware D-pad. Keeping tiles focusable while
-        // Android is in touch mode prevents the first D-pad press after a tap from being spent
-        // only on restoring focus.
-        isFocusableInTouchMode = true
         isClickable = true
         background = context.getDrawable(R.drawable.focus_frame)
         setPadding(context.dp(5), context.dp(7), context.dp(5), context.dp(5))

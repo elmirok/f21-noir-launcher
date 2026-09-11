@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.0-alpha.5 — unreleased
+
+- Added the original `Amber Rain` 480×640 Noir lock-screen wallpaper.
+- Added one-tap lock-screen apply and reversible ROM-wallpaper restore actions under Appearance.
+- Removed touch-mode focus capture now that Home D-pad movement is deterministic, restoring true one-tap tile opening.
+
 ## 0.1.0-alpha.4 — unreleased
 
 - Renamed the sixth default Home tile to `Ajustes Noir` and routed it consistently to the Noir settings UI.

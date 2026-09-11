@@ -30,6 +30,9 @@ O bloco **Ajustes Noir** da Home, o toque no relógio e Menu longo abrem sempre 
 do launcher. Para abrir o painel branco do firmware, escolha **Configurações do Android** dentro
 dos Ajustes Noir ou abra o aplicativo Settings na grade de aplicativos.
 
+Em **Aparência**, escolha **Wallpaper Noir — APLICAR** para usar a arte Amber Rain somente na tela
+bloqueada. **Wallpaper da ROM — RESTAURAR** desfaz a alteração sem mexer no wallpaper da Home.
+
 ## Privacidade
 
 Não existe permissão de Internet, telemetria, propaganda, conta, sincronização ou Google Play

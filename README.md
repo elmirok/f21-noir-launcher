@@ -15,6 +15,10 @@ contains no ads, telemetry, Google services, or network permission.
 |---|---|---|
 | ![Physical F21 Home](assets/device/home.png) | ![Physical F21 app drawer](assets/device/apps.png) | ![Physical F21 settings](assets/device/settings.png) |
 
+### Amber Rain lock screen
+
+![Amber Rain running on the physical F21 Pro](assets/device/lockscreen-amber-rain.png)
+
 ## Features
 
 - Noir Minimal interface for the F21's 480×640 display at 208 dpi.
@@ -25,6 +29,7 @@ contains no ads, telemetry, Google services, or network permission.
 - Short number press opens the dialer; long press launches a configurable shortcut.
 - Reversible hidden-app list and a direct route back to Android's default-home settings.
 - A dedicated Noir settings tile, with the vendor Android Settings clearly separated inside it.
+- Original 480×640 `Amber Rain` lock-screen wallpaper, applied and restored from Appearance.
 - No runtime permissions and no broad package-list permission; the manifest exposes only the
   launcher-intent queries needed to draw the app drawer.
 

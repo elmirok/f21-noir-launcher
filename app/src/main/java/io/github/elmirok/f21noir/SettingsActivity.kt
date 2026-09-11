@@ -1,6 +1,7 @@
 package io.github.elmirok.f21noir
 
 import android.app.Activity
+import android.app.WallpaperManager
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
@@ -129,6 +130,8 @@ class SettingsActivity : Activity() {
             repository.setAnimationsEnabled(!repository.animationsEnabled())
             renderAppearance()
         })
+        body.addView(row("Wallpaper Noir", "APLICAR") { applyNoirLockWallpaper() })
+        body.addView(row("Wallpaper da ROM", "RESTAURAR") { restoreRomLockWallpaper() })
         body.addView(row("Escolher launcher padrão") { openHomeSettings() })
         body.addView(row("Voltar ao Launcher3") { openHomeSettings() })
         body.addView(row("Sobre e privacidade") { page = Page.ABOUT; render() })
@@ -168,6 +171,27 @@ class SettingsActivity : Activity() {
             startActivity(Intent(Settings.ACTION_SETTINGS))
         } catch (_: Exception) {
             Toast.makeText(this, "Configurações do Android indisponíveis", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun applyNoirLockWallpaper() {
+        try {
+            WallpaperManager.getInstance(this).setResource(
+                R.raw.f21_noir_amber_rain,
+                WallpaperManager.FLAG_LOCK,
+            )
+            Toast.makeText(this, "Wallpaper Noir aplicado à tela bloqueada", Toast.LENGTH_SHORT).show()
+        } catch (_: Exception) {
+            Toast.makeText(this, "Não foi possível aplicar o wallpaper", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun restoreRomLockWallpaper() {
+        try {
+            WallpaperManager.getInstance(this).clear(WallpaperManager.FLAG_LOCK)
+            Toast.makeText(this, "Wallpaper da ROM restaurado", Toast.LENGTH_SHORT).show()
+        } catch (_: Exception) {
+            Toast.makeText(this, "Não foi possível restaurar o wallpaper", Toast.LENGTH_LONG).show()
         }
     }
 

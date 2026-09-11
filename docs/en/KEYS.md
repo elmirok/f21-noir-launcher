@@ -31,10 +31,9 @@ Read-only inspection on a physical `k61v1_64_bsp` running Android 11 identified:
 - Swipe down in all apps: return Home.
 - Swipe left or right in all apps: change page.
 
-App tiles remain focusable in Android touch mode, so the first D-pad press after touching the
-screen moves focus immediately instead of only restoring keyboard focus. Home navigation is
-handled directly by the launcher and wraps at every grid edge, so each directional press produces
-a visible move.
+Home navigation is handled directly by the launcher and preserves its last position after touch,
+so the first D-pad press moves immediately. It wraps at every grid edge, making each directional
+press produce a visible move while a screen tap continues to open a tile on the first touch.
 
 The keypad also reports the star position as `KEY_SWITCHVIDEOMODE` at the Linux
 input layer. Its final Android keycode, and long-press behavior for Menu and
